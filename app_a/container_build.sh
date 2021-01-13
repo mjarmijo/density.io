@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build -t density:latest .
+docker build -t density_app_a:latest .
 
