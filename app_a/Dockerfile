@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y vim python3-pip
 RUN mkdir /app
 
 # copy the app
-COPY  requirements.txt app_a.py /app
+COPY  requirements.txt app_a.py /app/
 WORKDIR /app
 RUN pip3 install -r requirements.txt
 
