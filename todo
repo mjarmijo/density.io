@@ -1,0 +1,3 @@
+get sqllite container running
+start db in sqllite, check it and query
+make the request

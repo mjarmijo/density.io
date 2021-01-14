@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build -t postgres:13.1 .
+docker build -t sql:latest .
 

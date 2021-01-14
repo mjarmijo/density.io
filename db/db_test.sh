@@ -1,10 +1,12 @@
 #!/bin/bash
 
-psql \
--h localhost \
--p 5432 \
--d mydb \
--U postgres \
+sqlite3 database.db < schema.sql
+
+sqlite3 database.db
+
+## sqlite commands
+# .tables (.tables 'var%' for search)
+
 
 
  # psql -h <hostname or ip address> -p <port number of remote machine> -d <database name which you want to connect> -U <username of the database server>
