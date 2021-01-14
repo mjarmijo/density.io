@@ -3,21 +3,22 @@ import sqlite3 as sql
 application = Flask(__name__)
 
 #localhost:5001/auth?token=mytoken
+@application.route('/hello')
+def hello():
+    return 'Howdy, there'
 
 @application.route('/auth', methods=['POST'])
 def auth():
     try:
-        return "hello world"
-        #token = request.form['token']
-        #print(token)
-        #con = sql.connect("database.db")
-        #cur = con.cursor()
-        #cur.execute(
-        #    "SELECT username from users where token = (?) LIMIT 1",
-        #    (token, ))
-        #username = cur.fetchone()[0]
-        #con.close()
-        #return username
+        token = request.form['token']
+        con = sql.connect("database.db")
+        cur = con.cursor()
+        cur.execute(
+            "SELECT username from users where token = (?) LIMIT 1",
+            (token, ))
+        username = cur.fetchone()[0]
+        con.close()
+        return username
     except:
         return 'fail'
 
