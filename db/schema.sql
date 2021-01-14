@@ -1,5 +1,5 @@
 CREATE TABLE users (
-  id integer primary key autoincrement,
+  id serial primary key,
   username text not null,
   password text not null,
   token text not null);

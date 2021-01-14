@@ -1,6 +1,7 @@
 FROM postgres:13.1    
-    
+#FROM library/postgres
 
+COPY schema.sql /docker-entrypoint-initdb.d/
 
     #image: "postgres" # use latest official postgres version
     #environment:

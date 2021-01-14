@@ -2,6 +2,7 @@ from flask import Flask, request
 import sqlite3 as sql
 application = Flask(__name__)
 
+#localhost:5001/auth?token=mytoken
 
 @application.route('/auth', methods=['POST'])
 def auth():
