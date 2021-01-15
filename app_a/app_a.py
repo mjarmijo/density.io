@@ -12,11 +12,12 @@ def hello():
 def jobs():
     token = request.headers['Authorization']
     data = {"token": token}
-    result = requests.post('http://0.0.0.0:5001/auth', data=data).content
+    result = requests.post('http://app_b:5001/auth', data=data).text
     if result == "density":
         return 'Jobs:\nTitle: Devops\nDescription: Awesome\n'
     else:
-        return 'fail'
+        token = request.headers['Authorization']
+        return '{} {} {}'.format('fail', token, result)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,29 @@
+version: "3"
+
+services: 
+  app_a:
+    image: "density_app_a:latest"
+   # environment:
+    ports:
+      - 5000:5000
+  #  command: 
+  
+  app_b:
+    image: "density_app_b:latest"
+   # environment:
+    ports:
+      - 5001:5001
+    volumes:
+      - ./app_b/:/app/
+    #command:
+  
+#  database:
+#    image: "sql:latest"
+#   # environment:
+#   # ports:
+#    volumes:
+#      - ./db/database-data:/db/ # persist data even if container shuts down
+#  
+
+#volumes:
+#  database-data:
