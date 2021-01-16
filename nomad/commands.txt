@@ -19,6 +19,9 @@ nomad server members
 ## allocation status ##
 nomad alloc status alloc_ID # get allocation info (task on a node, also a -stats flag for more resource info)
 nomad alloc logs alloc_id redis
+nomad alloc logs -job <job-id> <task>
+
 
 ## stop job ##
 nomad job stop example
+

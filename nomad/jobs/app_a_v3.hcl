@@ -3,7 +3,7 @@
 # https://www.nomadproject.io/docs/job-specification/
 
 
-job "app_a_job" {
+job "app-a-job" {
   # The "region" parameter specifies the region in which to execute the job.
   # If omitted, this inherits the default region name of "global".
   # region = "global"
@@ -116,28 +116,28 @@ job "app_a_job" {
   # the same Nomad client. Any task within a group will be placed on the same
   # client.
   
-  #group "cache" {
-  #  # The "count" parameter specifies the number of the task groups that should
-  #  # be running under this group. This value must be non-negative and defaults
-  #  # to 1.
-  #  count = 1
-  #
-  #  # The "network" stanza specifies the network configuration for the allocation
-  #  # including requesting port bindings.
-  #  network {
-  #    port "db" {
-  #      to = 6379
-  #    }
-  #  }
-  
+  group "app-a-group" {
+    # The "count" parameter specifies the number of the task groups that should
+    # be running under this group. This value must be non-negative and defaults
+    # to 1.
+    count = 1
+
+    # The "network" stanza specifies the network configuration for the allocation
+    # including requesting port bindings.
+    network {
+      port "app-a-port" {
+        to = 5000
+      }
+    }
+
     # The "service" stanza instructs Nomad to register this task as a service
     # in the service discovery engine, which is currently Consul. This will
     # make the service addressable after Nomad has placed it on a host and
     # port.
-  #  service {
-  #    name = "redis-cache"
-  #    tags = ["global", "cache"]
-  #    port = "db"
+    service {
+      name = "app-a-service"
+      tags = ["global", "density", "app-a-service"]
+      port = "app-a-port"
 
       # The "check" stanza instructs Nomad to create a Consul health check for
       # this service. A sample check is provided here for your convenience;
@@ -150,7 +150,7 @@ job "app_a_job" {
       #   timeout  = "2s"
       # }
 
-  
+    }
 
 ###############################################################################
 ################################# Restart #####################################
@@ -178,7 +178,7 @@ job "app_a_job" {
     # instead of a hard disk requirement. Clients using this stanza should
     # not specify disk requirements in the resources stanza of the task. All
     # tasks in this group will share the same ephemeral disk.
-  #  ephemeral_disk {
+    ephemeral_disk {
       # When sticky is true and the task group is updated, the scheduler
       # will prefer to place the updated allocation on the same node and
       # will migrate the data. This is useful for tasks that store data
@@ -191,8 +191,8 @@ job "app_a_job" {
       #
       # The "size" parameter specifies the size in MB of shared ephemeral disk
       # between tasks in the group.
-  #    size = 300
-   # }
+      size = 300
+    }
 
     # The "affinity" stanza enables operators to express placement preferences
     # based on node attributes or metadata.
@@ -233,7 +233,7 @@ job "app_a_job" {
 
     # The "task" stanza creates an individual unit of work, such as a Docker
     # container, web application, or batch processing.
-    task "app_a_task" {
+    task "app-a-task" {
       # The "driver" parameter specifies the task driver that should be used to
       # run the task.
       driver = "docker"
@@ -244,7 +244,7 @@ job "app_a_job" {
       # documentation for more information.
       config {
         image = "density_app_a:latest"
-        ports = [5000]
+        ports = ["app-a-port"]
       }
 
       # The "artifact" stanza instructs Nomad to download an artifact from a
@@ -313,5 +313,5 @@ job "app_a_job" {
       # and killing the task. If not set a default is used.
       # kill_timeout = "20s"
     }
-  
+  }
 }

@@ -37,7 +37,7 @@ job "example" {
   # job, it applies to all groups within the job. When placed at both the job and
   # group level, the stanzas are merged with the group's taking precedence.
   update {
-    #health_check = "task_states"
+    health_check = "task_states"
     
     # The "max_parallel" parameter specifies the maximum number of updates to
     # perform in parallel. In this case, this specifies to update a single task
