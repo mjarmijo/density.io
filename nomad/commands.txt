@@ -1,0 +1,24 @@
+### server and starting nomad ####
+sudo nomad agent -dev # start nomad in devmode
+nomad agent -config server.hcl
+sudo nomad agent -config client1.hcl
+sudo nomad agent -config client2.hcl
+
+
+### run a job ####
+nomad job plan example.nomad
+nomad job run example.nomad  # run job, rolling update by default
+nomad job init  # create example job file
+
+### status for job, node, server ####
+nomad status example  # get job status
+nomad job status
+nomad node status
+nomad server members 
+
+## allocation status ##
+nomad alloc status alloc_ID # get allocation info (task on a node, also a -stats flag for more resource info)
+nomad alloc logs alloc_id redis
+
+## stop job ##
+nomad job stop example
