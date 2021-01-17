@@ -67,6 +67,12 @@ job "app-a-job" {
       # Configuration is specific to each driver.
       config {
         image = "app-a-port"
+        command = "python3"
+
+        args = [
+          "app_a.py"
+        ]
+
       }
 
       # It is possible to set environment variables which will be

@@ -12,7 +12,8 @@ def hello():
 def jobs():
     token = request.headers['Authorization']
     data = {"token": token}
-    result = requests.post('http://app_b:5001/auth', data=data).text
+#    result = requests.post('http://localhost:5001/auth', data=data).text
+    result = requests.post('http://0.0.0.0:5001/auth', data=data).text
     if result == "density":
         return 'Jobs:\nTitle: Devops\nDescription: Awesome\n'
     else:
@@ -22,3 +23,4 @@ def jobs():
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', port=5000)
+#

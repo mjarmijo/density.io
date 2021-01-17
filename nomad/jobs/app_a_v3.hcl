@@ -245,6 +245,12 @@ job "app-a-job" {
       config {
         image = "density_app_a:latest"
         ports = ["app-a-port"]
+        command = "python3"
+
+        args = [
+          "app_a.py"
+        ]
+
       }
 
       # The "artifact" stanza instructs Nomad to download an artifact from a

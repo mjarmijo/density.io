@@ -13,6 +13,6 @@ COPY  requirements.txt app_b.py database.db /app/
 WORKDIR /app
 RUN pip3 install -r requirements.txt
 
-CMD ["python3", "app_b.py"]
+#CMD ["python3", "app_b.py"]
 
 

@@ -1,3 +1,13 @@
 get sqllite container running
 start db in sqllite, check it and query
 make the request
+
+
+some issue still in the dockerfile
+can't get networking between containers to work
+not sure what the problem is
+
+
+Maybe need to hcange the name from localhost or 0.0.0.0 
+to a name of the group, or task and it will start working
+thinking docker on docker compose. 

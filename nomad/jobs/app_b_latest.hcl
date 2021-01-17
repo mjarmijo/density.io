@@ -1,4 +1,4 @@
-job "app-a-job" {
+job "app-b-job" {
   datacenters = ["dc1"]
   type = "service"
   # constraint {
@@ -10,19 +10,19 @@ job "app-a-job" {
     # potential values are "checks" or "task_states".
     health_check = "task_states"
   }
-  group "app-a-group" {
+  group "app-b-group" {
     count = 1
     network {
-      port "app-a-port" {
+      port "app-b-port" {
 #        to = 5000 # dynamically assings localhost port 
-        static = 5000
-        to     = 5000
+        static = 5001
+        to     = 5001
       }
     }
     service {
-      name = "app-a-service"
-      tags = ["global", "density", "app-a"]
-      port = "app-a-port"
+      name = "app-b-service"
+      tags = ["global", "density", "app-b"]
+      port = "app-b-port"
       # check {
       #   name     = "alive"
       #   type     = "tcp"
@@ -30,17 +30,17 @@ job "app-a-job" {
       #   timeout  = "2s"
       # }
     }
-    task "app-a-task" {
+    task "app-b-task" {
       driver = "docker"
 
       config {
-        image = "mjarmijo/app_a:latest"
-     #   ports = ["app-a-port"]
-        ports = ["app-a-port"]
+        image = "mjarmijo/app_b:latest"
+     #   ports = ["app-b-port"]
+        ports = ["app-b-port"]
 
         command = "python3"
         args = [
-          "app_a.py"
+          "app_b.py"
         ]
 
       }

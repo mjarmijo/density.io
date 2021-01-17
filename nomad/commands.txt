@@ -16,10 +16,19 @@ nomad job status
 nomad node status
 nomad server members 
 
+# get more detailed job deploy info logs 
+nomad job status -evals app-a-job
+nomad eval status 7844c2b9 # look up specific eval
+
 ## allocation status ##
 nomad alloc status alloc_ID # get allocation info (task on a node, also a -stats flag for more resource info)
 nomad alloc logs alloc_id redis
 nomad alloc logs -job <job-id> <task>
+
+#WHEN THERE IS AN ERROR###
+# BE SURE TO LOOK UP THE JOB STATUS, AND GET THE ALLOC ID
+# RUN the alloc id status to see the output and get the error
+
 
 
 ## stop job ##
