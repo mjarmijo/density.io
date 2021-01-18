@@ -52,6 +52,7 @@ job "density" {
       config {
         image = "mjarmijo/app_a:latest"
    #     network_mode = "bridge"
+         network_mode = "host"
 
      #   ports = ["app-a-port"]
         ports = ["app-a"]
@@ -76,6 +77,7 @@ job "density" {
       config {
         image = "mjarmijo/app_b:latest"
    #     network_mode = "bridge"
+         network_mode = "host"
 
      #   ports = ["app-b-port"]
         ports = ["app-b"]

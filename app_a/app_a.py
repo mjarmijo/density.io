@@ -9,14 +9,13 @@ application = Flask(__name__)
 def hello():
     return 'Hello there'
 
-
 @application.route('/jobs', methods=['POST'])
 def jobs():
     token = request.headers['Authorization']
     data = {"token": token}
-    result =  requests.post('http://localhost:5001/auth')
-###    result = requests.post('http://app-b/auth', data=data).text
-####   result = requests.post('http://0.0.0.0:5001/auth', data=data).text
+    result =  requests.post('http://localhost:5001/auth').text
+#    result = requests.post('http://app-b/auth', data=data).text
+#   result = requests.post('http://0.0.0.0:5001/auth', data=data).text
     if result == "density":
         return 'Jobs:\nTitle: Devops\nDescription: Awesome\n'
     else:
