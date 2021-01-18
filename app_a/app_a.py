@@ -14,8 +14,9 @@ def hello():
 def jobs():
     token = request.headers['Authorization']
     data = {"token": token}
-    result = requests.post('http://app-b/auth', data=data).text
-##   result = requests.post('http://0.0.0.0:5001/auth', data=data).text
+    result =  requests.post('http://localhost:5001/auth')
+###    result = requests.post('http://app-b/auth', data=data).text
+####   result = requests.post('http://0.0.0.0:5001/auth', data=data).text
     if result == "density":
         return 'Jobs:\nTitle: Devops\nDescription: Awesome\n'
     else:
@@ -26,7 +27,7 @@ def jobs():
 def a():
     token = request.headers['Authorization']
     data = {"token": token}
-    result = requests.post('http://app-b:app-b/auth', data=data).text
+    result = requests.post('http://app-b:5001/auth', data=data).text
 ##   result = requests.post('http://0.0.0.0:5001/auth', data=data).text
     if result == "density":
         return 'Jobs:\nTitle: Devops\nDescription: Awesome\n'
@@ -36,10 +37,10 @@ def a():
 
 @application.route('/b', methods=['POST'])
 def b():
-    ip = os.environ.get("NOMAD_ADDR_app-b")
+    ip = os.environ.get("NOMAD_ADDR_app_b")
     token = request.headers['Authorization']
     data = {"token": token}
-    result = requests.post('http://ip/auth', data=data).text
+    result = requests.post(f'http://{ip}/auth', data=data).text
 ##   result = requests.post('http://0.0.0.0:5001/auth', data=data).text
     if result == "density":
         return 'Jobs:\nTitle: Devops\nDescription: Awesome\n'
