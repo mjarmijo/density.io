@@ -14,6 +14,8 @@ print(response.text)
 print(response.content)
 print(dir(response))
 print(response.request)
+print(response.request.body)
+print(response.request.headers)
 
 if response.status_code == 200:
     print(f"Response [{response.status_code}]:  {response.text}")
