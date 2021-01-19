@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker exec -it density_app_b /bin/bash
+docker exec -it compose_app_b /bin/bash

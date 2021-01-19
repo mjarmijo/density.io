@@ -2,14 +2,14 @@ version: "3"
 
 services: 
   app_a:
-    image: "density_app_a:latest"
+    image: "compose_app_a:latest"
    # environment:
     ports:
       - 5000:5000
   #  command: 
   
   app_b:
-    image: "density_app_b:latest"
+    image: "compose_app_b:latest"
    # environment:
     ports:
       - 5001:5001

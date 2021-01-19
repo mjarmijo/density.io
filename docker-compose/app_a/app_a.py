@@ -10,8 +10,8 @@ def hello():
     return 'Hello there'
 
 
-@application.route('/jobs', methods=['POST'])
-def jobs():
+@application.route('/a', methods=['POST'])
+def a():
     token = request.headers['Authorization']
     data = {"token": token}
     result =  requests.post('http://localhost:5001/auth').text
@@ -23,8 +23,8 @@ def jobs():
         token = request.headers['Authorization']
         return '{} {} {}'.format('fail', token, result)
 
-@application.route('/a', methods=['POST'])
-def a():
+@application.route('/jobs', methods=['POST'])
+def jobs():
     token = request.headers['Authorization']
     data = {"token": token}
     result = requests.post('http://app_b:5001/auth', data=data).text
