@@ -16,11 +16,10 @@ print(dir(result))
 print(result.request.body)
 print(result.request.headers)
 
-'''
-if response.status_code == 200:
-    print(f"Response [{response.status_code}]:  {response.text}")
+
+if result.status_code == 200:
+    print(f"Response [{result.status_code}]:  {result.text}")
 else:
     print("ERROR:")
-    print(f"Response [{response.status_code}]: {response.reason}")
+    print(f"Response [{result.status_code}]: {result.reason}")
 
-'''

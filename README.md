@@ -1,68 +1,55 @@
-# density.io
+# density.io - homework - build and deploy app on nomad
 
-task: https://github.com/DensityCo/devops-homework
+task: <https://github.com/DensityCo/devops-homework>
 
-finding: 
-https://learn.hashicorp.com/tutorials/nomad/get-started-jobs?in=nomad/get-started
+## install nomad
 
-#######################
-# install nomad commands and instructions
-#######################
-NOTE: Use consul for service discovery and monitoring with Nomad
+---
 
+### sync machine time (if necesasry)
 
 sudo ntpdate ntp.ubuntu.com
 
-# add gpg key
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -D
+### add gpg key
 
-# add hashicorp repo
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+curl -fsSL <https://apt.releases.hashicorp.com/gpg> | sudo apt-key add -D
 
-# update and install
+### add hashicorp repo
+
+sudo apt-add-repository "deb [arch=amd64] <https://apt.releases.hashicorp.com> $(lsb_release -cs) main"
+
+### update and install
+
 sudo apt-get update && sudo apt-get install nomad
 
-# check install
+### check install
+
 nomad
 
-# start dev agent/serve mode for nomad
+### start dev agent/serve mode for nomad
+
 sudo nomad agent -dev
 
-#######################
-# test nomad worked
-#######################
+## Commands
 
-# verify nodes (start another terminal) -- node should be in ready state
-nomad node status
+---
+see commands.txt in nomad/
 
-# view server info (status alive)
-nomad server members -detailed 
-nomad server members 
+## Links
 
-## START A JOB
-* Jobs are the primary configuration that users interact with when using Nomad. A job is a declarative specification of tasks that Nomad should run. Jobs have a globally unique name, one or many task groups, which are themselves collections of one or many tasks.
-* Each Job has a specification called a jobspec written in HCL. 
-* Job > Groups > Tasks
-* Each job file has only a single job, however a job may have multiple groups, and each group may have multiple tasks. 
-* Groups contain a set of tasks that are co-located on a machine.
+---
+jobspec example: <https://www.nomadproject.io/docs/job-specification>
+docker driver: <https://www.nomadproject.io/docs/drivers/docker>
 
-#### 
-resources
-#####
-jobspec example: https://www.nomadproject.io/docs/job-specification
-
-docker driver: https://www.nomadproject.io/docs/drivers/docker
-
-connect (group services/tasks) example jobspec (don't need but good to know and see): https://www.nomadproject.io/docs/job-specification/connect
-
-Next steps:
-create my github repo
-create script to spin up cluster
-create python docker contianers (use selenium container)
-get apps running
+Notes:
+connect (group services/tasks) example jobspec (don't need but good to know and see): <https://www.nomadproject.io/docs/job-specification/connect>
 
 know how to set up the DB
-How would you connect db to flask? 
+How would you connect db to flask?
 What about updates? read/write replicas?
 
-
+* Jobs are the primary configuration that users interact with when using Nomad. A job is a declarative specification of tasks that Nomad should run. Jobs have a globally unique name, one or many task groups, which are themselves collections of one or many tasks.
+* Each Job has a specification called a jobspec written in HCL.
+* Job > Groups > Tasks
+* Each job file has only a single job, however a job may have multiple groups, and each group may have multiple tasks.
+* Groups contain a set of tasks that are co-located on a machine.

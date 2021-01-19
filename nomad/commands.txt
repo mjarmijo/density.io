@@ -1,16 +1,21 @@
-### server and starting nomad ####
+
+# server and starting nomad 
 sudo nomad agent -dev # start nomad in devmode
 nomad agent -config server.hcl
 sudo nomad agent -config client1.hcl
 sudo nomad agent -config client2.hcl
 
+# verify server/nodes (start another terminal) -- node should be in ready state
+nomad node status
+nomad server members -detailed
+nomad server members
 
-### run a job ####
+# run a job 
 nomad job plan example.nomad
 nomad job run example.nomad  # run job, rolling update by default
 nomad job init  # create example job file
 
-### status for job, node, server ####
+# status for job, node, server 
 nomad status example  # get job status
 nomad job status
 nomad node status
@@ -20,10 +25,15 @@ nomad server members
 nomad job status -evals app-a-job
 nomad eval status 7844c2b9 # look up specific eval
 
-## allocation status ##
+# allocation status 
 nomad alloc status alloc_ID # get allocation info (task on a node, also a -stats flag for more resource info)
 nomad alloc logs alloc_id redis
 nomad alloc logs -job <job-id> <task>
+nomad alloc logs -tail -f e9a0fc5f app-a
+
+# enter container
+nomad alloc exec -task app-a d645a02c /bin/bash
+
 
 #WHEN THERE IS AN ERROR###
 # BE SURE TO LOOK UP THE JOB STATUS, AND GET THE ALLOC ID
