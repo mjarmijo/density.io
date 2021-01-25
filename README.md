@@ -8,23 +8,23 @@ task: <https://github.com/DensityCo/devops-homework>
 
 ### sync machine time (if necesasry)
 
-sudo ntpdate ntp.ubuntu.com
+`sudo ntpdate ntp.ubuntu.com`  
 
 ### add gpg key
 
-curl -fsSL <https://apt.releases.hashicorp.com/gpg> | sudo apt-key add -D
+`curl -fsSL <https://apt.releases.hashicorp.com/gpg> | sudo apt-key add -D`  
 
 ### add hashicorp repo
 
-sudo apt-add-repository "deb [arch=amd64] <https://apt.releases.hashicorp.com> $(lsb_release -cs) main"
+`sudo apt-add-repository "deb [arch=amd64] <https://apt.releases.hashicorp.com> $(lsb_release -cs) main"`  
 
 ### update and install
 
-sudo apt-get update && sudo apt-get install nomad
+`sudo apt-get update && sudo apt-get install nomad`  
 
 ### check install
 
-nomad
+`nomad`  
 
 ### start dev agent/serve mode for nomad
 
