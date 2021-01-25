@@ -76,14 +76,24 @@ see commands.txt in nomad/
 
 ## CI/CD strategy
 
+---
 - Build docker images using drone
-- Builds begin on commit to master. 
-- Every image is tagged with the commit sha. 
+- Builds begin on commit to master.  
+- Every image is tagged with the commit sha.  
 
-- Inject the commit sha tag into the jobspec. 
-- Apply changes and deploy new image. 
-- Controll the rollout with the update stanza in the jobspec. 
+- Inject the commit sha tag into the jobspec.  
+- Apply changes and deploy new image.  
+- Controll the rollout with the update stanza in the jobspec.  
 - Chain together deploy pipeline for dev, staging, prod (if dev healthy deploy staging, if staging healthy deploy prod)
+
+## To Do List
+
+---
+- get bridge networking forwarding for wsl2 working
+- test app on local host
+- get ci pipeline working for the apps, use ecr
+- terraform and an ec2?  
+- get cd working also - lowest priority
 
 ## Links
 
