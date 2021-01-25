@@ -28,7 +28,46 @@ nomad
 
 ### start dev agent/serve mode for nomad
 
-sudo nomad agent -dev
+`sudo nomad agent -dev`
+
+## Deploy
+
+---
+### Docker Compose
+-start docker
+`cd docker-compose`
+`docker-compose up`
+
+-open another terminal and run tests in each app folder or in browser
+
+-clean up
+`docker-compose down`
+
+### Nomad
+-start nomad 
+`sudo nomad agent -dev`
+
+-open new terminal and check status
+`nomad status`
+
+`launch a job
+`cd nomad/jobs`
+`nomad job run density_latest.hcl`
+`nomad status`
+`nomad job status density`
+
+-copy the allocations ID for other commands
+`nomad alloc status cadad7da`
+`nomad alloc logs cadad7da app-a`
+`nomad alloc exec -task app-a cadad7da /bin/bash`
+
+-clean up
+`nomad job stop density`
+
+## Note:
+Bridge networking does not work in WSL2 without a workaround, see here:
+https://github.com/microsoft/WSL/issues/4150
+
 
 ## Commands
 

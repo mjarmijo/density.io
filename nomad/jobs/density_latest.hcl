@@ -13,6 +13,7 @@ job "density" {
   group "density-group" {
     count = 1
     network {
+      #mode = "bridge"
       port "app-a" {
 #        to = 5000 # dynamically assings localhost port 
         static = 5000
@@ -51,8 +52,8 @@ job "density" {
 
       config {
         image = "mjarmijo/app_a:latest"
-   #     network_mode = "bridge"
-         network_mode = "host"
+        #network_mode = "bridge"
+        network_mode = "host"
 
      #   ports = ["app-a-port"]
         ports = ["app-a"]
@@ -76,8 +77,8 @@ job "density" {
 
       config {
         image = "mjarmijo/app_b:latest"
-   #     network_mode = "bridge"
-         network_mode = "host"
+        #network_mode = "bridge"
+        network_mode = "host"
 
      #   ports = ["app-b-port"]
         ports = ["app-b"]
