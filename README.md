@@ -74,6 +74,17 @@ https://github.com/microsoft/WSL/issues/4150
 ---
 see commands.txt in nomad/
 
+## CI/CD strategy
+
+- Build docker images using drone
+- Builds begin on commit to master. 
+- Every image is tagged with the commit sha. 
+
+- Inject the commit sha tag into the jobspec. 
+- Apply changes and deploy new image. 
+- Controll the rollout with the update stanza in the jobspec. 
+- Chain together deploy pipeline for dev, staging, prod (if dev healthy deploy staging, if staging healthy deploy prod)
+
 ## Links
 
 ---
