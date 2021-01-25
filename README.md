@@ -33,35 +33,35 @@ nomad
 ## Deploy
 
 ---
-### Docker Compose
--start docker
+### Docker Compose  
+-start docker  
 `cd docker-compose`  
 `docker-compose up`  
 
--open another terminal and run tests in each app folder or in browser
+-open another terminal and run tests in each app folder or in browser  
 
--clean up
+-clean up  
 `docker-compose down`  
 
-### Nomad
--start nomad 
+### Nomad  
+-start nomad  
 `sudo nomad agent -dev`  
 
--open new terminal and check status
+-open new terminal and check status  
 `nomad status`  
 
--launch a job
+-launch a job  
 `cd nomad/jobs`  
 `nomad job run density_latest.hcl`  
 `nomad status`  
 `nomad job status density`  
 
--copy the allocations ID for other commands
+-copy the allocations ID for other commands  
 `nomad alloc status cadad7da`  
 `nomad alloc logs cadad7da app-a`  
 `nomad alloc exec -task app-a cadad7da /bin/bash`  
 
--clean up
+-clean up  
 `nomad job stop density`  
 
 ## Note:
